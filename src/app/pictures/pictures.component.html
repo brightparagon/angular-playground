@@ -1,0 +1,24 @@
+<h2>{{firstPicture.name}} Details</h2>
+<div><span>id: </span>{{firstPicture.id}}</div>
+<div><span>name: </span>{{firstPicture.name | uppercase}}</div>
+
+<div>
+  <label>
+    name:
+    <input [(ngModel)]="firstPicture.name" placeholder="name" />
+  </label>
+</div>
+
+<h2>My pictures</h2>
+<ul class="pictures">
+  <li *ngFor="let picture of pictures"
+    [class.selected]="picture === selectedPicture"
+    (click)="onSelect(picture)"
+  >
+    <a routerLink="/picture/{{picture.id}}">
+      <span class="badge">{{picture.id}}</span> {{picture.name}}
+    </a>
+  </li>
+</ul>
+
+<app-picture [picture]="selectedPicture"></app-picture>
